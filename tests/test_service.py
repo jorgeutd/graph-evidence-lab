@@ -39,6 +39,6 @@ def test_api_evidence_and_context(client):
     assert result.status_code==200 and result.json()['trace']['excluded_future_nodes']==1
     assert client.post('/context',json=request).json()['status']=='ready'
 
-@pytest.mark.parametrize('request',[{'text':''},{'text':'x','as_of':'bad'},{'text':'x','k':21},{'text':'x','method':'unknown'},{'text':' '*5}])
-def test_api_invalid_request(client,request):
-    assert client.post('/retrieve',json=request).status_code==422
+@pytest.mark.parametrize('payload',[{'text':''},{'text':'x','as_of':'bad'},{'text':'x','k':21},{'text':'x','method':'unknown'},{'text':' '*5}])
+def test_api_invalid_request(client,payload):
+    assert client.post('/retrieve',json=payload).status_code==422
