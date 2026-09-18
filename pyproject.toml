@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graph-evidence-lab"
+version = "0.1.0"
+description = "Query-conditioned graph learning for inspectable evidence retrieval"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{name = "Jorge Grisman"}]
+dependencies = ["torch==2.8.0"]
+
+[project.optional-dependencies]
+api = ["fastapi==0.116.1", "uvicorn==0.35.0"]
+dev = ["pytest==8.4.2", "httpx==0.28.1", "fastapi==0.116.1", "uvicorn==0.35.0"]
+
+[project.scripts]
+graph-evidence = "graph_evidence_lab.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

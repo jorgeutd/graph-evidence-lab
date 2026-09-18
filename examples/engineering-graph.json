@@ -1,0 +1,638 @@
+{
+  "nodes": [
+    {
+      "id": "batching",
+      "title": "Continuous batching",
+      "kind": "serving",
+      "text": "Admit new sequences when existing sequences finish. Token scheduling improves accelerator utilization; admission limits prevent a long queue from exhausting memory.",
+      "source": "example://engineering-handbook/batching",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "kv-cache",
+      "title": "KV cache budget",
+      "kind": "inference",
+      "text": "Attention keys and values are retained for previous tokens. Estimate bytes from layers, sequence length, key value heads, head dimension, concurrency and element precision.",
+      "source": "example://engineering-handbook/kv-cache",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "prefill",
+      "title": "Prefill and decode",
+      "kind": "inference",
+      "text": "Prompt prefill processes input tokens together. Autoregressive decode emits one new token per sequence per step. Time to first token and time between tokens describe different bottlenecks.",
+      "source": "example://engineering-handbook/prefill",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "quantization",
+      "title": "Weight quantization",
+      "kind": "inference",
+      "text": "Low bit weight representations reduce parameter storage. Calibration, group size and quantization error affect quality. Weight precision alone does not determine KV cache precision or total device memory.",
+      "source": "example://engineering-handbook/quantization",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "device",
+      "title": "On-device deployment",
+      "kind": "serving",
+      "text": "Local model execution must fit memory and supported operators while meeting latency, thermal and battery constraints. Test the target device, model artifact and runtime together.",
+      "source": "example://engineering-handbook/device",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "routing",
+      "title": "Model routing",
+      "kind": "serving",
+      "text": "Choose a model using task requirements, latency budget and capability checks. A smaller model is useful only if it meets the acceptance criteria. Record router decisions and fallback reasons.",
+      "source": "example://engineering-handbook/routing",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "admission",
+      "title": "Admission control",
+      "kind": "serving",
+      "text": "Bound in-flight work and queue length. Reject or defer excess requests before the service loses its latency objective. Account for prompt lengths rather than counting requests alone.",
+      "source": "example://engineering-handbook/admission",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "retry",
+      "title": "Bounded retry",
+      "kind": "reliability",
+      "text": "Retry transient failures with a deadline, backoff and jitter. Repeated attempts must fit the remaining budget. Retrying non-idempotent side effects can duplicate an action.",
+      "source": "example://engineering-handbook/retry",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "idempotency",
+      "title": "Idempotency keys",
+      "kind": "reliability",
+      "text": "An operation key lets a service recognize duplicate attempts and return the prior outcome. Persist the outcome and request identity across process restarts when side effects matter.",
+      "source": "example://engineering-handbook/idempotency",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "traces",
+      "title": "Distributed traces",
+      "kind": "observability",
+      "text": "Correlate request, retrieval, tool, model and validation spans. Preserve parent identifiers, errors and retry attempts. A trace records execution evidence but does not establish answer correctness.",
+      "source": "example://engineering-handbook/traces",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "latency",
+      "title": "Latency distributions",
+      "kind": "observability",
+      "text": "Measure p50, p95 and p99 under representative concurrency and input lengths. Separate queue wait, preparation, model execution and streaming. Report warmup and hardware alongside results.",
+      "source": "example://engineering-handbook/latency",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "rollout",
+      "title": "Canary release",
+      "kind": "delivery",
+      "text": "Release to a bounded cohort and compare quality, error and latency signals with a baseline. Define stop conditions, monitor delayed feedback and keep a compatible rollback artifact.",
+      "source": "example://engineering-handbook/rollout",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "registry",
+      "title": "Artifact registry",
+      "kind": "delivery",
+      "text": "Version model weights, tokenizer, runtime, prompt, dataset and evaluator. A release manifest ties their identities together. Checksums identify bytes rather than proving quality.",
+      "source": "example://engineering-handbook/registry",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "rollback",
+      "title": "Rollback compatibility",
+      "kind": "delivery",
+      "text": "Restore a prior compatible model and application configuration. Data migrations, feature schemas and runtime operators can prevent a simple artifact rollback. Exercise recovery before a release.",
+      "source": "example://engineering-handbook/rollback",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "bm25",
+      "title": "Lexical retrieval baseline",
+      "kind": "retrieval",
+      "text": "BM25 ranks documents using query term overlap, inverse document frequency and length normalization. It is a strong cheap baseline for exact names and terminology; no training judgments are needed.",
+      "source": "example://engineering-handbook/bm25",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "embedding",
+      "title": "Dense retrieval",
+      "kind": "retrieval",
+      "text": "A text encoder maps queries and documents to vectors. Similarity can retrieve semantic matches without exact words. Pin encoder revision, chunking and index settings; evaluate on held-out queries.",
+      "source": "example://engineering-handbook/embedding",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "reranking",
+      "title": "Candidate reranking",
+      "kind": "retrieval",
+      "text": "A second stage scores a bounded candidate set with a query and each document. Candidate recall bounds final ranking quality. Compare extra latency and quality against the first-stage baseline.",
+      "source": "example://engineering-handbook/reranking",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "chunking",
+      "title": "Document chunking",
+      "kind": "retrieval",
+      "text": "Split documents with stable identifiers and useful boundaries. Retain headings and provenance. Very small chunks can lose context; very large chunks can dilute matching and exceed context budgets.",
+      "source": "example://engineering-handbook/chunking",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "citations",
+      "title": "Citation validation",
+      "kind": "evaluation",
+      "text": "Check that answer citations refer to supplied source identifiers. Identifier membership is not entailment. A separate claim-to-evidence review must assess whether the cited text actually supports each claim.",
+      "source": "example://engineering-handbook/citations",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "grounding",
+      "title": "Grounded answer evaluation",
+      "kind": "evaluation",
+      "text": "Evaluate factual claims against retrieved evidence. Separate retrieval failures from reader failures, unsupported claims and wrong citations. Human adjudication is useful when automated judges disagree.",
+      "source": "example://engineering-handbook/grounding",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "recall",
+      "title": "Retrieval recall",
+      "kind": "evaluation",
+      "text": "Recall at k measures the fraction of judged relevant items retrieved within k results. Candidate recall measures whether later reranking can possibly recover the desired evidence.",
+      "source": "example://engineering-handbook/recall",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "ndcg",
+      "title": "Graded ranking quality",
+      "kind": "evaluation",
+      "text": "Normalized discounted cumulative gain rewards highly relevant documents near the top of a ranking. Define relevance grades, logarithmic discount and cutoff. Missing judgments can bias evaluation.",
+      "source": "example://engineering-handbook/ndcg",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "splits",
+      "title": "Leakage-aware splits",
+      "kind": "evaluation",
+      "text": "Keep paraphrases and shared intent groups in one split. Select checkpoints on validation only. A temporal test excludes future information; a held-out query test on a known graph is not unseen-graph generalization.",
+      "source": "example://engineering-handbook/splits",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "bootstrap",
+      "title": "Uncertainty estimates",
+      "kind": "evaluation",
+      "text": "Bootstrap query-level metric rows to show sensitivity to sampled questions. Fixed-model intervals omit training-seed uncertainty and do not prove significance. Compare paired query outcomes when testing differences.",
+      "source": "example://engineering-handbook/bootstrap",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "graph-schema",
+      "title": "Graph schema",
+      "kind": "graphs",
+      "text": "Define node identity, relation direction, edge confidence, source and availability time before model training. Derived reverse edges inherit the original evidence availability. A graph database stores relationships without requiring a neural model.",
+      "source": "example://engineering-handbook/graph-schema",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "message-passing",
+      "title": "Message passing",
+      "kind": "graphs",
+      "text": "A graph neural network transforms neighbor features, aggregates incoming messages and updates each node representation. Relation-specific parameters can distinguish prerequisite, mitigation and measurement links.",
+      "source": "example://engineering-handbook/message-passing",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "gcn",
+      "title": "Graph convolution",
+      "kind": "graphs",
+      "text": "A GCN mixes self and neighbor features with symmetric degree normalization and a learned projection. Repeated propagation expands the receptive field and may blur distinctions between nodes.",
+      "source": "example://engineering-handbook/gcn",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "sage",
+      "title": "Neighbor sampling",
+      "kind": "graphs",
+      "text": "GraphSAGE learns an aggregator over sampled neighbors and combines neighborhood evidence with a node self representation. Sampling controls memory and computation but introduces estimator variability.",
+      "source": "example://engineering-handbook/sage",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "attention",
+      "title": "Graph attention",
+      "kind": "graphs",
+      "text": "Attention assigns normalized neighbor coefficients from node features. GATv2 allows the query node to change neighbor ranking. Attention coefficients describe computation and are not causal explanations.",
+      "source": "example://engineering-handbook/attention",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "oversmoothing",
+      "title": "Oversmoothing diagnostic",
+      "kind": "graphs",
+      "text": "Repeated aggregation can make node representations similar. Inspect feature variance, task quality and receptive field as depth grows. Residual connections help optimization but do not guarantee informative representations.",
+      "source": "example://engineering-handbook/oversmoothing",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "temporal",
+      "title": "Temporal graph snapshots",
+      "kind": "graphs",
+      "text": "Filter nodes and edges by evidence availability at the prediction cutoff. Exclude future events and reverse-edge leakage. Publication or ingestion time can differ from the event time recorded inside a document.",
+      "source": "example://engineering-handbook/temporal",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "graph-rag",
+      "title": "Graph evidence for an LLM",
+      "kind": "retrieval",
+      "text": "Retrieve a compact connected evidence set from a knowledge graph, then pass readable text and source identifiers to a language model. Graph retrieval can use traversal or learned ranking; GraphRAG does not imply a GNN.",
+      "source": "example://engineering-handbook/graph-rag",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "prompt-boundary",
+      "title": "Evidence trust boundary",
+      "kind": "reliability",
+      "text": "Treat retrieved text as untrusted data. Keep system instructions outside evidence, restrict tool permissions and validate outputs. A disclaimer inside a prompt alone does not prevent prompt injection.",
+      "source": "example://engineering-handbook/prompt-boundary",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "heterophily",
+      "title": "Relation semantics",
+      "kind": "graphs",
+      "text": "Connected nodes need not share a label. Distinguish incompatible relation types and edge directions. A graph model can fail when it assumes homophily but edges represent complementary roles.",
+      "source": "example://engineering-handbook/heterophily",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "ablation",
+      "title": "Graph ablation",
+      "kind": "evaluation",
+      "text": "Compare trained graph ranking with lexical search, graph diffusion and a feature-only neural model. Removing edges with weights fixed measures sensitivity; retraining without edges is a separate experiment.",
+      "source": "example://engineering-handbook/ablation",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "cold-start",
+      "title": "Cold-start evidence",
+      "kind": "retrieval",
+      "text": "New documents can have text but no graph links. Preserve a lexical or dense fallback, measure isolated-node behavior and separate unseen-node evaluation from unseen-query evaluation.",
+      "source": "example://engineering-handbook/cold-start",
+      "available_at": "2026-08-01"
+    },
+    {
+      "id": "future-runtime",
+      "title": "Future runtime proposal",
+      "kind": "serving",
+      "text": "This fictional runtime proposal is unavailable until 2027. It exists only to exercise temporal exclusion and must not appear in September 2026 evidence.",
+      "source": "example://engineering-handbook/future-runtime",
+      "available_at": "2027-01-01"
+    }
+  ],
+  "edges": [
+    {
+      "source": "batching",
+      "target": "kv-cache",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "device",
+      "target": "quantization",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "reranking",
+      "target": "recall",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "rollout",
+      "target": "registry",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "rollout",
+      "target": "rollback",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "message-passing",
+      "target": "graph-schema",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "graph-rag",
+      "target": "graph-schema",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "graph-rag",
+      "target": "chunking",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "grounding",
+      "target": "citations",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "attention",
+      "target": "message-passing",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "gcn",
+      "target": "message-passing",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "sage",
+      "target": "message-passing",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "temporal",
+      "target": "graph-schema",
+      "relation": "requires",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "batching",
+      "target": "latency",
+      "relation": "measured_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "device",
+      "target": "latency",
+      "relation": "measured_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "routing",
+      "target": "grounding",
+      "relation": "measured_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "reranking",
+      "target": "ndcg",
+      "relation": "measured_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "bm25",
+      "target": "recall",
+      "relation": "measured_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "embedding",
+      "target": "recall",
+      "relation": "measured_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "graph-rag",
+      "target": "grounding",
+      "relation": "measured_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "message-passing",
+      "target": "ablation",
+      "relation": "measured_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "quantization",
+      "target": "grounding",
+      "relation": "measured_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "rollout",
+      "target": "traces",
+      "relation": "measured_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "retry",
+      "target": "idempotency",
+      "relation": "mitigated_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "batching",
+      "target": "admission",
+      "relation": "mitigated_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "oversmoothing",
+      "target": "ablation",
+      "relation": "mitigated_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "cold-start",
+      "target": "bm25",
+      "relation": "mitigated_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "heterophily",
+      "target": "graph-schema",
+      "relation": "mitigated_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "prompt-boundary",
+      "target": "citations",
+      "relation": "mitigated_by",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "prefill",
+      "target": "kv-cache",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "prefill",
+      "target": "latency",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "quantization",
+      "target": "kv-cache",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "traces",
+      "target": "retry",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "traces",
+      "target": "latency",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "splits",
+      "target": "temporal",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "bootstrap",
+      "target": "ndcg",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "bootstrap",
+      "target": "recall",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "graph-rag",
+      "target": "message-passing",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "graph-rag",
+      "target": "prompt-boundary",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "reranking",
+      "target": "embedding",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "chunking",
+      "target": "bm25",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "attention",
+      "target": "heterophily",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "oversmoothing",
+      "target": "gcn",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "ablation",
+      "target": "splits",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "cold-start",
+      "target": "sage",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "routing",
+      "target": "device",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "registry",
+      "target": "rollback",
+      "relation": "context_for",
+      "available_at": "2026-08-02",
+      "confidence": 1.0
+    },
+    {
+      "source": "future-runtime",
+      "target": "device",
+      "relation": "context_for",
+      "available_at": "2027-01-01",
+      "confidence": 1.0
+    }
+  ]
+}

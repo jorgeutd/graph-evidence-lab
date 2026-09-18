@@ -1,0 +1,527 @@
+[
+  {
+    "id": "train-cache-budget-0",
+    "group": "cache-budget",
+    "split": "train",
+    "text": "How do I budget KV cache bytes for concurrent sequences?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "kv-cache": 3,
+      "prefill": 1,
+      "batching": 1
+    }
+  },
+  {
+    "id": "train-cache-budget-1",
+    "group": "cache-budget",
+    "split": "train",
+    "text": "What determines key value attention memory as context grows?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "kv-cache": 3,
+      "prefill": 1,
+      "batching": 1
+    }
+  },
+  {
+    "id": "train-device-size-0",
+    "group": "device-size",
+    "split": "train",
+    "text": "How can quantization fit model weights on a phone?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "quantization": 3,
+      "device": 3,
+      "latency": 1
+    }
+  },
+  {
+    "id": "train-device-size-1",
+    "group": "device-size",
+    "split": "train",
+    "text": "What should I check before local low bit deployment?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "quantization": 3,
+      "device": 3,
+      "latency": 1
+    }
+  },
+  {
+    "id": "train-retry-write-0",
+    "group": "retry-write",
+    "split": "train",
+    "text": "How do I prevent duplicate actions when retrying a tool?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "idempotency": 3,
+      "retry": 3,
+      "traces": 1
+    }
+  },
+  {
+    "id": "train-retry-write-1",
+    "group": "retry-write",
+    "split": "train",
+    "text": "What makes a repeated operation safe after a transient failure?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "idempotency": 3,
+      "retry": 3,
+      "traces": 1
+    }
+  },
+  {
+    "id": "train-trace-path-0",
+    "group": "trace-path",
+    "split": "train",
+    "text": "How do I correlate model calls and tool spans?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "traces": 3,
+      "latency": 1,
+      "retry": 1
+    }
+  },
+  {
+    "id": "train-trace-path-1",
+    "group": "trace-path",
+    "split": "train",
+    "text": "What should a distributed request trace retain?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "traces": 3,
+      "latency": 1,
+      "retry": 1
+    }
+  },
+  {
+    "id": "train-ranking-grades-0",
+    "group": "ranking-grades",
+    "split": "train",
+    "text": "How do I evaluate a graded document ranking?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "ndcg": 3,
+      "recall": 1,
+      "bootstrap": 1
+    }
+  },
+  {
+    "id": "train-ranking-grades-1",
+    "group": "ranking-grades",
+    "split": "train",
+    "text": "Which ranking metric rewards highly relevant results at the top?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "ndcg": 3,
+      "recall": 1,
+      "bootstrap": 1
+    }
+  },
+  {
+    "id": "train-edge-contract-0",
+    "group": "edge-contract",
+    "split": "train",
+    "text": "What belongs in a versioned graph schema?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "graph-schema": 3,
+      "temporal": 2,
+      "heterophily": 1
+    }
+  },
+  {
+    "id": "train-edge-contract-1",
+    "group": "edge-contract",
+    "split": "train",
+    "text": "How should node identities and relation direction be represented?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "graph-schema": 3,
+      "temporal": 2,
+      "heterophily": 1
+    }
+  },
+  {
+    "id": "train-release-stop-0",
+    "group": "release-stop",
+    "split": "train",
+    "text": "How do I stop a failing canary model release?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "rollout": 3,
+      "rollback": 3,
+      "registry": 2
+    }
+  },
+  {
+    "id": "train-release-stop-1",
+    "group": "release-stop",
+    "split": "train",
+    "text": "What is needed to roll back a model deployment?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "rollout": 3,
+      "rollback": 3,
+      "registry": 2
+    }
+  },
+  {
+    "id": "train-candidate-limit-0",
+    "group": "candidate-limit",
+    "split": "train",
+    "text": "Why can a reranker miss evidence outside its candidate set?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "recall": 3,
+      "reranking": 3,
+      "embedding": 1
+    }
+  },
+  {
+    "id": "train-candidate-limit-1",
+    "group": "candidate-limit",
+    "split": "train",
+    "text": "How does candidate recall limit a second stage ranker?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "recall": 3,
+      "reranking": 3,
+      "embedding": 1
+    }
+  },
+  {
+    "id": "train-split-paraphrase-0",
+    "group": "split-paraphrase",
+    "split": "train",
+    "text": "How do I avoid paraphrase leakage between training and test?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "splits": 3,
+      "ablation": 1,
+      "temporal": 1
+    }
+  },
+  {
+    "id": "train-split-paraphrase-1",
+    "group": "split-paraphrase",
+    "split": "train",
+    "text": "Where should related query intent groups go in a dataset split?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "splits": 3,
+      "ablation": 1,
+      "temporal": 1
+    }
+  },
+  {
+    "id": "train-neighbor-messages-0",
+    "group": "neighbor-messages",
+    "split": "train",
+    "text": "How does a graph network aggregate relation-specific messages?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "message-passing": 3,
+      "gcn": 2,
+      "sage": 2
+    }
+  },
+  {
+    "id": "train-neighbor-messages-1",
+    "group": "neighbor-messages",
+    "split": "train",
+    "text": "How are a node and its neighbors combined in message passing?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "message-passing": 3,
+      "gcn": 2,
+      "sage": 2
+    }
+  },
+  {
+    "id": "train-text-index-0",
+    "group": "text-index",
+    "split": "train",
+    "text": "When should I start with BM25 instead of embeddings?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "bm25": 3,
+      "embedding": 2,
+      "chunking": 1
+    }
+  },
+  {
+    "id": "train-text-index-1",
+    "group": "text-index",
+    "split": "train",
+    "text": "How can lexical term overlap provide a cheap retrieval baseline?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "bm25": 3,
+      "embedding": 2,
+      "chunking": 1
+    }
+  },
+  {
+    "id": "train-evidence-answer-0",
+    "group": "evidence-answer",
+    "split": "train",
+    "text": "How do I give an LLM graph evidence and source IDs?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "graph-rag": 3,
+      "citations": 2,
+      "prompt-boundary": 1
+    }
+  },
+  {
+    "id": "train-evidence-answer-1",
+    "group": "evidence-answer",
+    "split": "train",
+    "text": "Does graph retrieval for a language model require a neural network?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "graph-rag": 3,
+      "citations": 2,
+      "prompt-boundary": 1
+    }
+  },
+  {
+    "id": "validation-queue-overload",
+    "group": "queue-overload",
+    "split": "validation",
+    "text": "What protects batching latency when a request queue is overloaded?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "admission": 3,
+      "batching": 2,
+      "latency": 2
+    }
+  },
+  {
+    "id": "validation-citation-membership",
+    "group": "citation-membership",
+    "split": "validation",
+    "text": "Do valid citation identifiers prove that an answer is supported?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "citations": 3,
+      "grounding": 3
+    }
+  },
+  {
+    "id": "validation-depth-collapse",
+    "group": "depth-collapse",
+    "split": "validation",
+    "text": "How can deeper graph convolution blur node representations?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "oversmoothing": 3,
+      "gcn": 2,
+      "ablation": 1
+    }
+  },
+  {
+    "id": "validation-time-snapshot",
+    "group": "time-snapshot",
+    "split": "validation",
+    "text": "What does a graph snapshot exclude before a prediction cutoff?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "temporal": 3,
+      "graph-schema": 2,
+      "splits": 2
+    }
+  },
+  {
+    "id": "validation-cold-new-node",
+    "group": "cold-new-node",
+    "split": "validation",
+    "text": "How can a new document with no graph neighbors be retrieved?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "cold-start": 3,
+      "bm25": 2,
+      "embedding": 2
+    }
+  },
+  {
+    "id": "validation-attention-ranking",
+    "group": "attention-ranking",
+    "split": "validation",
+    "text": "How can a query node change neighbor attention ranking?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "attention": 3,
+      "message-passing": 1
+    }
+  },
+  {
+    "id": "validation-uncertainty",
+    "group": "uncertainty",
+    "split": "validation",
+    "text": "What uncertainty does query bootstrap leave out?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "bootstrap": 3,
+      "splits": 1,
+      "ndcg": 1
+    }
+  },
+  {
+    "id": "validation-registry-identity",
+    "group": "registry-identity",
+    "split": "validation",
+    "text": "Which model and evaluator versions belong in a release manifest?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "registry": 3,
+      "rollout": 1,
+      "rollback": 1
+    }
+  },
+  {
+    "id": "test-decode-bottleneck",
+    "group": "decode-bottleneck",
+    "split": "test",
+    "text": "Why is time to first token different from time between tokens?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "prefill": 3,
+      "latency": 3,
+      "kv-cache": 1
+    }
+  },
+  {
+    "id": "test-lowbit-total",
+    "group": "lowbit-total",
+    "split": "test",
+    "text": "Does weight quantization also reduce every cache allocation?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "quantization": 3,
+      "kv-cache": 3,
+      "device": 1
+    }
+  },
+  {
+    "id": "test-injection-evidence",
+    "group": "injection-evidence",
+    "split": "test",
+    "text": "How should an LLM handle instructions inside retrieved documents?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "prompt-boundary": 3,
+      "graph-rag": 2,
+      "citations": 1
+    }
+  },
+  {
+    "id": "test-label-assumption",
+    "group": "label-assumption",
+    "split": "test",
+    "text": "Can connected graph nodes have different labels and roles?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "heterophily": 3,
+      "graph-schema": 2,
+      "attention": 1
+    }
+  },
+  {
+    "id": "test-seed-comparison",
+    "group": "seed-comparison",
+    "split": "test",
+    "text": "How do I test whether graph edges improve retrieval over text features?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "ablation": 3,
+      "bm25": 2,
+      "splits": 2,
+      "bootstrap": 1
+    }
+  },
+  {
+    "id": "test-edge-intervention",
+    "group": "edge-intervention",
+    "split": "test",
+    "text": "Does removing edges from a fixed model prove a causal explanation?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "ablation": 3,
+      "attention": 2
+    }
+  },
+  {
+    "id": "test-sampling-scale",
+    "group": "sampling-scale",
+    "split": "test",
+    "text": "How can neighbor sampling bound graph computation and memory?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "sage": 3,
+      "message-passing": 2
+    }
+  },
+  {
+    "id": "test-route-acceptance",
+    "group": "route-acceptance",
+    "split": "test",
+    "text": "When is a smaller routed model acceptable for a task?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "routing": 3,
+      "grounding": 2,
+      "latency": 1
+    }
+  },
+  {
+    "id": "test-rollback-schema",
+    "group": "rollback-schema",
+    "split": "test",
+    "text": "Why can a schema migration break model rollback?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "rollback": 3,
+      "registry": 3,
+      "rollout": 1
+    }
+  },
+  {
+    "id": "test-chunk-size",
+    "group": "chunk-size",
+    "split": "test",
+    "text": "How do document chunk boundaries affect retrieval context?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "chunking": 3,
+      "bm25": 1,
+      "graph-rag": 1
+    }
+  },
+  {
+    "id": "test-latency-report",
+    "group": "latency-report",
+    "split": "test",
+    "text": "What should accompany p95 latency in a serving benchmark?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "latency": 3,
+      "prefill": 2,
+      "admission": 1
+    }
+  },
+  {
+    "id": "test-reverse-time",
+    "group": "reverse-time",
+    "split": "test",
+    "text": "Can reverse graph edges leak future information into a test?",
+    "as_of": "2026-09-18",
+    "relevant": {
+      "temporal": 3,
+      "splits": 3,
+      "graph-schema": 2
+    }
+  }
+]
