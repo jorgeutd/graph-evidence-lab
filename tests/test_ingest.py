@@ -13,7 +13,10 @@ def test_markdown_links_are_explicit_local_and_reproducible(tmp_path):
 def test_hidden_directories_and_symlinks_are_not_ingested(tmp_path):
     (tmp_path/'a.md').write_text('# Alpha\nText')
     (tmp_path/'.hidden').mkdir();(tmp_path/'.hidden'/'b.md').write_text('# Hidden\nText')
-    (tmp_path/'alias.md').symlink_to(tmp_path/'a.md')
+    try:
+        (tmp_path/'alias.md').symlink_to(tmp_path/'a.md')
+    except OSError:
+        pytest.skip('This operating-system account cannot create symbolic links')
     assert len(import_markdown(tmp_path,'2026-09-18').nodes)==1
 
 @pytest.mark.parametrize('text',['','x'*20001])
