@@ -9,6 +9,9 @@ from .retrieval import retrieve, context_packet
 def main():
     parser = argparse.ArgumentParser(description='Train and inspect graph-aware evidence retrieval.')
     commands = parser.add_subparsers(dest='command', required=True)
+    ingest=commands.add_parser('ingest',help='Import Markdown documents and their explicit local links')
+    ingest.add_argument('directory');ingest.add_argument('--available-at',required=True)
+    ingest.add_argument('--output',required=True)
     train = commands.add_parser('benchmark')
     train.add_argument('--graph', default='examples/engineering-graph.json')
     train.add_argument('--queries', default='examples/queries.json')
@@ -25,7 +28,16 @@ def main():
     serve.add_argument('--checkpoint',default='runs/baseline/gnn-seed-0.json')
     serve.add_argument('--port',type=int,default=8000)
     args = parser.parse_args()
-    if args.command=='benchmark':
+    if args.command=='ingest':
+        from pathlib import Path
+        from .ingest import import_markdown
+        graph=import_markdown(args.directory,args.available_at)
+        output=Path(args.output)
+        if output.exists():parser.error('Output already exists; choose a new path to preserve the prior corpus.')
+        output.parent.mkdir(parents=True,exist_ok=True)
+        output.write_text(json.dumps(graph.to_dict(),indent=2),encoding='utf8')
+        print(json.dumps({'nodes':len(graph.nodes),'edges':len(graph.edges),'fingerprint':graph.fingerprint,'output':str(output)}))
+    elif args.command=='benchmark':
         if not 1 <= args.epochs <= 1000 or 0 not in args.seeds:
             parser.error('Use 1–1000 epochs and include seed 0 for the fixed replay.')
         graph = Graph.load(args.graph)

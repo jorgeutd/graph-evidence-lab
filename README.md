@@ -65,6 +65,18 @@ CI trains the models and uploads the exact report and replay. See [Actions](http
 
 ## Use your own graph
 
+Start with local Markdown, without training or a model checkpoint:
+
+```sh
+graph-evidence ingest ./my-notes --available-at 2026-09-18 --output runs/my-notes.json
+graph-evidence query 'How do we evaluate retrieval?' --graph runs/my-notes.json --method bm25 --as-of 2026-09-18
+graph-evidence query 'How do we evaluate retrieval?' --graph runs/my-notes.json --method diffusion --as-of 2026-09-18 --context
+```
+
+Import creates one node per document and edges from explicit local Markdown links. It does not fetch URLs, invent relationships or generate evaluation labels. The supplied date means when these documents became available to this experiment. Files outside the chosen directory, symlinks and hidden dependency directories are excluded. Prepare oversized documents as meaningful chunks first. Construct independent query judgments before training the GNN on a new corpus.
+
+Retrieval abstains when there is no lexical anchor in the eligible corpus. This is a conservative prototype rule, not a calibrated relevance or answerability detector.
+
 See [the schema and temporal contract](docs/data-contract.md). Provide graph JSON and query judgments, then run:
 
 ```sh

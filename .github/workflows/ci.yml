@@ -25,7 +25,10 @@ jobs:
       - name: Train and benchmark three fixed seeds
         run: graph-evidence benchmark --seeds 0 1 2 --epochs 100 --output runs/baseline
       - name: Exercise the public CLI
-        run: graph-evidence query 'How should an LLM handle instructions inside retrieved documents?' --context
+        run: |
+          graph-evidence query 'How should an LLM handle instructions inside retrieved documents?' --context
+          graph-evidence ingest docs --available-at 2026-09-18 --output runs/imported-docs.json
+          graph-evidence query 'How should I evaluate retrieval?' --graph runs/imported-docs.json --method bm25 --context
       - uses: actions/upload-artifact@v4
         if: always()
         with:
