@@ -1,0 +1,9 @@
+{
+  "trained_revision": "16595dbf80cb1f3707411cca98b3515a3c97d68a",
+  "workflow_run": "https://github.com/jorgeutd/graph-evidence-lab/actions/runs/35352452200",
+  "tests": 29,
+  "date": "2026-09-18",
+  "graph_fingerprint": "f5d528cc2bdbdbe9a81364c70ccb7ad1b639a00068f82cf12f4c5ae5d4c350fb",
+  "query_fingerprint": "8c4d275187a4ee7ac01b1a8a6937f1e4814e9345b318f0cea45124c5920d7ad8",
+  "selection": "Validation NDCG@5 only. Seeds fixed before test. No dataset changes after first measured run."
+}

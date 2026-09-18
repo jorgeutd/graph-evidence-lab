@@ -59,7 +59,9 @@ The original fixture has **37 nodes, 48 directed typed edges and 44 queries**: 2
 
 The benchmark reports Recall@5, graded NDCG@5 and MRR@5, per-query outcomes, three training seeds, validation history and query-bootstrap intervals. Test judgments neither construct edges nor select a checkpoint. Twelve authored test questions cannot establish generalization, statistical superiority or production value. There is no LLM answer-quality evaluation.
 
-CI trains the models and uploads the exact report and replay. See [Actions](https://github.com/jorgeutd/graph-evidence-lab/actions) for measured runs. Checked-in results, when present, are described in [the evaluation protocol](docs/evaluation.md). A lexical baseline winning is a useful result.
+The first measured run passed 29 tests. BM25 scored 0.811 NDCG@5, graph diffusion 0.815, and the GNN averaged 0.776 across three seeds on twelve authored test questions. The GNN does not beat the simpler baselines on this metric.
+
+CI trains the models and uploads the exact report and replay. See [Actions](https://github.com/jorgeutd/graph-evidence-lab/actions) for measured runs. The checked-in report, replay and seed-0 checkpoint are described in [the evaluation protocol](docs/evaluation.md). A lexical baseline winning is a useful result.
 
 ## Use your own graph
 

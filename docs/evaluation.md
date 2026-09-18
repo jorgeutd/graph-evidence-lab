@@ -19,3 +19,17 @@ Compare BM25, lexical-seeded graph diffusion, the retrained feature-only neural 
 Use a versioned external corpus and independently judged questions; hold out organizations, time periods or graphs as the intended deployment requires. Add a tuned dense retriever and cross-encoder. Measure candidate coverage, retrieval accuracy, grounded answer quality, abstention, citation entailment, cost and latency separately. Use paired query comparisons, multiple seeds, failure slices and a predeclared decision rule. Report graph construction cost and errors.
 
 A GNN is justified only when it improves a task enough to offset its operational cost. If simpler methods win, keep them.
+
+## First measured result · 18 September 2026
+
+The [reference run](https://github.com/jorgeutd/graph-evidence-lab/actions/runs/35352452200) passed **29 tests** and trained three fixed seeds. Test NDCG@5 was **0.811 for BM25**, **0.815 for graph diffusion**, **0.729 for the feature-only neural baseline** (three-seed mean), and **0.776 for the relational GNN** (three-seed mean). GNN seed results were 0.801, 0.776 and 0.749. These are point estimates on twelve authored questions; the intervals overlap, and no superiority claim is warranted.
+
+The current GNN does not beat the simpler baselines on mean NDCG. With seed-0 weights held fixed, removing all graph edges reduces NDCG from 0.801 to 0.701. This demonstrates sensitivity to graph computation, not that the trained graph approach is the best retrieval system.
+
+Inspect [the complete report](../reports/benchmark.json), [all twelve recorded queries and messages](../reports/replay.json), and [provenance](../reports/provenance.json). The fixture and hyperparameters were not changed to improve these test results. A next model revision needs a fresh held-out evaluation set if these outcomes guide its development.
+
+Try the recorded checkpoint without retraining:
+
+```sh
+graph-evidence query 'How should an LLM handle instructions inside retrieved documents?' --checkpoint artifacts/gnn-seed-0.json --context
+```
