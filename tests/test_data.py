@@ -31,6 +31,12 @@ def test_fingerprint_order_invariant(graph):
     data=graph.to_dict(); data['nodes'].reverse(); data['edges'].reverse()
     assert Graph(data).fingerprint==graph.fingerprint
 
+def test_export_cannot_mutate_frozen_snapshot(graph):
+    before=graph.fingerprint
+    data=graph.to_dict();data['nodes'][0]['text']='changed';data['edges'][0]['confidence']=0
+    assert graph.nodes[0].text!='changed' and graph.edges[0].confidence==1
+    assert Graph(graph.to_dict()).fingerprint==before
+
 @pytest.mark.parametrize('kind',['group','future_label','empty_grade'])
 def test_bad_split_rejected(graph,queries,tmp_path,kind):
     if kind=='group': queries[-1]['group']=queries[0]['group']

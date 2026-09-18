@@ -65,7 +65,9 @@ class Graph:
         return cls(json.loads(Path(path).read_text(encoding='utf8')))
 
     def to_dict(self) -> dict:
-        return {'nodes': [vars(n) for n in self.nodes], 'edges': [vars(e) for e in self.edges]}
+        # Never expose a dataclass __dict__: callers could mutate a frozen
+        # snapshot and silently invalidate its fingerprint.
+        return {'nodes': [dict(vars(n)) for n in self.nodes], 'edges': [dict(vars(e)) for e in self.edges]}
 
     def snapshot(self, as_of: str) -> Graph:
         cutoff = day(as_of)
